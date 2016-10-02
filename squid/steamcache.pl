@@ -1,6 +1,5 @@
 #! /usr/local/bin/perl 
 
-open(my $fh, ">>", "/tmp/rewrite.txt") or die "Can't open > output.txt: $!";
 $|=1;
 while (<>) 
 {
@@ -21,9 +20,9 @@ while (<>)
 	
 	my $oldurl = $url;
 
-	$url =~ s|http://valve[0-9]*\.cs\.steampowered\.com|http://valveX\.cs\.steampowered\.com|;
+	$url =~ s|http://valve[0-9]*\.cs\.steampowered\.com(.*?)\?.*|http://valveX\.cs\.steampowered\.com$1|;
 
-        $url =~ s|http://valve[0-9]*\.steamcontent\.com|http://valveX\.cs\.steamcontent\.com|;
+        $url =~ s|http://valve[0-9]*\.steamcontent\.com(.*?)\?.*|http://valveX\.cs\.steamcontent\.com$1|;
 
 	$url =~ s|http://content[1-8]\.steampowered\.com/|http://contentX\.steampowered\.com/|;
 
@@ -31,13 +30,10 @@ while (<>)
 	if ( $channelId == "") 
 	{ 
 		print "OK store-id=$url\n" ;
-		print $fh  "'$oldurl' : 'OK store-id=$url'\n" ;
 	}
 	else
 	{ 
 		print "$channelId OK store-id=$url\n" ;
-		print $fh "'$oldurl' : '$channelId OK store-id=$url'\n" ; 
 	}
 }
 
-close($fh);
