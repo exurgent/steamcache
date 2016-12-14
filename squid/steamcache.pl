@@ -26,7 +26,8 @@ while (<>)
 
 	$url =~ s|http://content[1-8]\.steampowered\.com/|http://contentX\.steampowered\.com/|;
 
-	
+	$url =~ s|http://blzddist[2-9]-a\.akamaihd\.net|http://blzddst1-a\.akamaihd\.net|;
+
 	if ( $channelId == "") 
 	{ 
 		print "OK store-id=$url\n" ;
