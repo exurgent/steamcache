@@ -1,0 +1,6 @@
+location /
+{
+	proxy_cache	off;	
+	proxy_pass	$scheme://$host$request_uri;
+}
+
