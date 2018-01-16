@@ -1,7 +1,7 @@
 # ESO sends no-cache headers for no good reason
 server
 {
-	server_name     *.patcher.elderscrollsonline.com;
+	server_name     live.patcher.elderscrollsonline.com pts.patcher.elderscrollsonline.com;
 	listen          3129;
 
 	include includes/slicing;
