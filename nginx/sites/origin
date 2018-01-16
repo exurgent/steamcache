@@ -1,0 +1,14 @@
+# Origin sends no-cache headers for no good reason
+# Also includes some request params which break caching
+server
+{
+	server_name     *.cdn.ea.com;
+	listen          3129;
+
+	proxy_ignore_headers Cache-Control;
+
+	include		includes/slicing;
+	proxy_cache_key $host$uri$slice_range;
+
+	include		includes/defaultlocation;        
+}

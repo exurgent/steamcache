@@ -1,0 +1,10 @@
+#Renegade X
+server
+{
+	server_name     cdn.renegade-x.com; 
+	listen          3129;
+	#They don't like slices
+	proxy_http_version	1.0;
+
+	include includes/defaultlocation;
+}

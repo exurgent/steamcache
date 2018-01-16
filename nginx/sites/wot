@@ -1,0 +1,11 @@
+#WoT
+server
+{
+	server_name     ~^dl-wot-[a-z]+\.wargaming\.net;
+	listen          3129;
+
+	include includes/slicing;                
+	proxy_cache_key  dl-wot-xx.wargaming.net$uri$is_args$args$slice_range;
+
+	include includes/defaultlocation;
+}

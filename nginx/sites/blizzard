@@ -1,0 +1,12 @@
+# Blizzard
+server
+{
+	server_name     ~^blzddist[1-9]-a\.akamaihd\.net;
+	listen          3129;
+
+	include includes/slicing;
+
+	proxy_cache_key blzddistX-a.akamaihd.net$uri$is_args$args$slice_range;
+
+	include includes/defaultlocation;              
+}

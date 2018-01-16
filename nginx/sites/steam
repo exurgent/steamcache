@@ -1,0 +1,26 @@
+# Steam uses subdomains like valve123 and valve456 serving identical files. Also includes some arguments in the URI which break caching
+server
+{
+	server_name     ~^valve\d+\.steamcontent\.com;
+	listen          3129;
+
+	#steam already  serves neat little chunks
+	proxy_cache_key valveX.steamcontent.com$uri;
+
+	include includes/defaultlocation;
+}
+server
+{
+	server_name     ~^media[1-9].steampowered.com;
+	listen          3129;
+
+	location /client
+	{
+		include		includes/slicing;
+		proxy_cache_key mediaX.steampowered.com$uri$is_args$args$slice_range;
+
+		proxy_pass      http://$host$request_uri;
+	}
+
+	include includes/defaultlocation_nocache;
+}

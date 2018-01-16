@@ -1,0 +1,11 @@
+#War Thunder
+server
+{
+	server_name     ~^gaijin\.s-\d+\.clients\.cdnnow\.ru;
+	listen          3129;
+
+	include includes/slicing;                
+	proxy_cache_key  gaijin.s-X.clients.cdnnow.ru$uri$is_args$args$slice_range;
+
+	include includes/defaultlocation;
+}
