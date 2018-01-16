@@ -1,0 +1,14 @@
+# Uplay already serves 1 MiB slices, no need for extra slicing
+server
+{
+	server_name     .cdn.ubi.com;
+	listen          3129;
+
+	location /uplaypc/downloads
+	{
+		proxy_cache_key $host$uri;
+		proxy_pass      http://$host$request_uri;
+	}
+
+	include includes/defaultlocation_nocache;
+}
