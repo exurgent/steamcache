@@ -1,12 +1,14 @@
-# Blizzard
+# Blizzard serves the same file from akamai and level3, but with different ETags
 server
 {
-	server_name     ~^blzddist[1-9]-a\.akamaihd\.net;
+	server_name	~^blzddist[1-9]-a\.akamaihd\.net
+							level3.blizzard.com;
 	listen          3129;
+	
+	proxy_hide_header ETag;
 
 	include includes/slicing;
-
 	proxy_cache_key blzddistX-a.akamaihd.net$uri$is_args$args$slice_range;
-
+	
 	include includes/defaultlocation;              
 }
