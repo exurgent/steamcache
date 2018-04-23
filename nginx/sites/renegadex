@@ -1,10 +1,35 @@
 #Renegade X
 server
 {
-	server_name     cdn.renegade-x.com; 
+	server_name     cdn.renegade-x.com
+			denver1.renegade-x.com
+			denver2.renegade-x.com
+			seattle1.renegade-x.com
+			czech1.renegade-x.com
+			czech2.renegade-x.com
+			rxp-atl.cncirc.net
+			rxp-chi.cncirc.net
+			rxp-nyc.cncirc.net
+			rxp-bgr.cncirc.net
+			rxp-sg.cncirc.net
+			renx.uk.dc.vps-solutions.co.uk
+			rxp-germany-srv1.ts3-server.ch
+			rxp-germany-srv2.ts3-server.ch
+			rxp-germany-srv3.ts3-server.ch
+			rxp-germany-srv4.ts3-server.ch;
+	
 	listen          3129;
-	#They don't like slices
-	proxy_http_version	1.0;
 
-	include includes/defaultlocation;
+        location ~*^/Patch[0-9]+/
+        {
+                include         includes/slicing;
+                proxy_cache_key RENEGADEX$uri$is_args$args$slice_range;
+		
+		#different servers, same ETags not guaranteed
+	        proxy_hide_header ETag;
+
+                proxy_pass      http://$host$request_uri;
+        }
+	
+	include includes/defaultlocation_nocache;
 }

@@ -6,8 +6,6 @@ server
 	pls.patch.daybreakgames.com
 	content.warframe.com
 	uscloud.6ft.com
-	rxp-de-frankfuhrt.file-server.download
-	*.renegade-x.com;
 	
 	listen 3129;
 	
