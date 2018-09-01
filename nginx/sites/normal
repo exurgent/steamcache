@@ -1,16 +1,12 @@
 # All servers which do not require any shenanigans
 server
 {
-	server_name	client-download.steampowered.com
-	pls.patch.station.sony.com
-	pls.patch.daybreakgames.com
-	content.warframe.com
-	uscloud.6ft.com
+	server_name	content.warframe.com
+	uscloud.6ft.com;
 	
 	listen 3129;
 	
 	include includes/slicing;
 	proxy_cache_key $host$uri$is_args$args$slice_range;
-
 	include includes/defaultlocation;
 }
