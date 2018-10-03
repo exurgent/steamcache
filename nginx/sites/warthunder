@@ -1,11 +1,27 @@
 #War Thunder
 server
 {
-	server_name     ~^gaijin\.s-\d+\.clients\.cdnnow\.ru;
+	server_name     ~^gaijin\.s-\d+\.clients\.cdnnow\.ru
+					~^gaijin\.s-\d+\.cdnnow\.ru
+					~^gaijin\.i-\d+(-\d+)?\.cdnnow\.ru;
 	listen          3129;
 
 	include includes/slicing;                
 	proxy_cache_key  gaijin.s-X.clients.cdnnow.ru$uri$is_args$args$slice_range;
+
+	include includes/defaultlocation;
+}
+
+server
+{
+	server_name     warthunder-storage.gcdn.co;
+	listen          3129;
+
+	include includes/slicing;      
+
+	# Gaijin URLS are gaijin.i-1-1.cdnnow.ru/content/warthunder/<stuff>  
+	# whereas these URLS are warthunder-storage.gcdn.co/warthunder/<stuff> but still serve  the same files
+	proxy_cache_key  gaijin.s-X.clients.cdnnow.ru/content$uri$is_args$args$slice_range;
 
 	include includes/defaultlocation;
 }
