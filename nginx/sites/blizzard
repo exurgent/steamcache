@@ -2,7 +2,8 @@
 server
 {
 	server_name	~^blzddist[1-9]-a\.akamaihd\.net
-							level3.blizzard.com;
+			level3.blizzard.com
+			.cdn.blizzard.com;
 	listen          3129;
 	
 	proxy_hide_header ETag;
