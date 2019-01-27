@@ -2,8 +2,9 @@
 server
 {
 	server_name     ~^gaijin\.s-\d+\.clients\.cdnnow\.ru
-					~^gaijin\.s-\d+\.cdnnow\.ru
-					~^gaijin\.i-\d+(-\d+)?\.cdnnow\.ru;
+			~^gaijin\.s-\d+\.cdnnow\.ru
+			~^gaijin\.i-\d+(-\d+)?\.cdnnow\.ru
+			~^\d+\.seed-gc-lx-\d+\.gaijinent\.com;
 	listen          3129;
 
 	include includes/slicing;                
@@ -14,7 +15,8 @@ server
 
 server
 {
-	server_name     warthunder-storage.gcdn.co;
+	server_name     warthunder-storage.gcdn.co
+		^	~^\d+\.l3-cdn\.gaijin\.net;
 	listen          3129;
 
 	include includes/slicing;      

@@ -1,15 +1,24 @@
 # Blizzard serves the same file from akamai and level3, but with different ETags
 server
 {
-	server_name	~^blzddist[1-9]-a\.akamaihd\.net
-			level3.blizzard.com
-			.cdn.blizzard.com;
+	server_name     ~^blzddist[1-9]-a\.akamaihd\.net
+			.cdn.blizzard.com
+			level3.blizzard.com;
 	listen          3129;
 	
 	proxy_hide_header ETag;
 
 	include includes/slicing;
-	proxy_cache_key blzddistX-a.akamaihd.net$uri$is_args$args$slice_range;
+	proxy_cache_key Blizzard-v1$uri$is_args$args$slice_range;
 	
+	# don't cache stuff under tpr/[game]/config
+	location ~* /config/
+	{
+        	proxy_pass      $scheme://$host$request_uri;
+	}
+
+
 	include includes/defaultlocation;              
+
 }
+
