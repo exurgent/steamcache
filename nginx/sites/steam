@@ -3,7 +3,9 @@ server
 {
 	server_name	*.steamcontent.com
 			steampipe.akamaized.net;
-	listen          3129;
+	listen          443 ssl;
+	ssl_certificate     /home/stdusr/steam.crt;
+    	ssl_certificate_key  /home/stdusr/steam.key;
 
 	#steam already  serves neat little chunks
         location /depot
