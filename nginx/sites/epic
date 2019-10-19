@@ -1,0 +1,22 @@
+# Epic serves content already sliced
+
+server
+{
+	server_name     epicgames-download1.akamaized.net
+					download.epicgames.com
+					download2.epicgames.com
+					download3.epicgames.com
+					download4.epicgames.com;
+	listen          3129;
+
+	location /Builds
+	{
+		proxy_cache_key epic-v1$uri$is_args$args;
+		proxy_pass      http://$host$request_uri;
+	}
+
+
+
+
+	include includes/defaultlocation; 
+}
