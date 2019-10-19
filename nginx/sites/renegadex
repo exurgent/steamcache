@@ -12,11 +12,17 @@ server
 			rxp-nyc.cncirc.net
 			rxp-bgr.cncirc.net
 			rxp-sg.cncirc.net
+			rxp-fl.cncirc.net
+			rxp-lv.cncirc.net
 			renx.uk.dc.vps-solutions.co.uk
 			rxp-germany-srv1.ts3-server.ch
 			rxp-germany-srv2.ts3-server.ch
 			rxp-germany-srv3.ts3-server.ch
-			rxp-germany-srv4.ts3-server.ch;
+			rxp-germany-srv4.ts3-server.ch
+			rxp1-de.my-servers.ch
+			rxp2-de.my-servers.ch
+			mirror.tyrant.gg
+			renx.b-cdn.net;
 	
 	listen          3129;
 
