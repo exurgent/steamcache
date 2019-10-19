@@ -1,7 +1,7 @@
 # Steam uses subdomains like valve123 and valve456 serving identical files. Also includes some arguments in the URI which break caching
 server
 {
-	server_name	*.steamcontent.com
+	server_name	.steamcontent.com
 			steampipe.akamaized.net;
 	listen          3129;
 

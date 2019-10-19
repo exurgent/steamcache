@@ -2,13 +2,14 @@
 # Also includes some request params which break caching
 server
 {
-	server_name     *.cdn.ea.com;
+	server_name     .cdn.ea.com
+			origin-a.akamaihd.net;
 	listen          3129;
 
 	proxy_ignore_headers Cache-Control;
 
 	include		includes/slicing;
-	proxy_cache_key $host$uri$slice_range;
+	proxy_cache_key akamai.cdn.ea.com$uri$slice_range;
 
 	include		includes/defaultlocation;        
 }
