@@ -1,0 +1,13 @@
+server
+{
+	server_name     pls.patch.station.sony.com
+			pls.patch.daybreakgames.com;
+	listen          3129;
+
+        proxy_hide_header ETag;
+
+	include includes/slicing;
+	proxy_cache_key $host$uri$is_args$args$slice_range;
+
+	include includes/defaultlocation; 
+}
