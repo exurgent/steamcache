@@ -21,12 +21,13 @@ server
 			rxp-germany-srv4.ts3-server.ch
 			rxp1-de.my-servers.ch
 			rxp2-de.my-servers.ch
-			mirror.tyrant.gg
-			renx.b-cdn.net;
+			.tyrant.gg
+			renx.b-cdn.net
+			cronub.fairplayinc.uk;
 	
 	listen          3129;
 
-        location ~*^/Patch[0-9]+/
+        location ~*/PATCH[0-9a-z]+/
         {
                 include         includes/slicing;
                 proxy_cache_key RENEGADEX$uri$is_args$args$slice_range;
